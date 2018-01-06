@@ -28,16 +28,6 @@ void loop () {
   chrono();   //check and do chrono
 }
 
-//display text to screen
-void displayVals () {    
-    display.clearDisplay();                 //clear display
-    display.setTextSize(4);                 //set text size for dispaly
-    display.setTextColor(WHITE);            //set text color for display
-    display.setCursor(0, 0);                //set cursor so display knows where to type 
-    // display.print((String)chronoReading);   //pring chrono reading
-    display.display();                      //display chrono reading
-}
-
 //chrono timing and trip checking
 void chrono () {    
   if (!hasFirstTripped && (map(analogRead(IR_REC_ONE_PIN), 0, 1024, 0, 100) > IR_GATE_TRIP_VAL) ) {   
@@ -73,4 +63,14 @@ int findFirstEmptyVal () {
   }
 
   return valToReturn;
+}
+
+//display text to screen
+void displayVals () {    
+    display.clearDisplay();                 //clear display
+    display.setTextSize(4);                 //set text size for dispaly
+    display.setTextColor(WHITE);            //set text color for display
+    display.setCursor(0, 0);                //set cursor so display knows where to type 
+    // display.print((String)chronoReading);   //pring chrono reading
+    display.display();                      //display chrono reading
 }
