@@ -5,22 +5,16 @@
 
 #define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 64
-
 #define IR_REC_ONE_PIN 0                  //pins for IR Gate
 #define IR_REC_TWO_PIN 1                  //pins for IR gate
 #define GATE_DISPLACEMENT 0.22916666666   //distance between gate, in feet
 #define IR_GATE_TRIP_VAL 60               //value at which the IR gate is considered "blocked", or "tripped"
-
 #define UNIT_TOG_BTN_PIN 2
 
 Adafruit_SSD1306 display(4);
-
 Button unitTogBtn (UNIT_TOG_BTN_PIN, true, true, 20);
-
-double firstTripTime, secondTripTime;    //keep track of timing between IR gate breakage
+double firstTripTime, secondTripTime, chronoReadings[5] = {0, 0, 0, 0, 0};    //keep track of timing between IR gate breakage
 boolean hasFirstTripped = false;    //flag to ensure proper timing
-
-double chronoReadings[5] = {0, 0, 0, 0, 0};
 
 void setup () { 
   display.begin(SSD1306_SWITCHCAPVCC, 0x3C);  //begin dispaly
