@@ -18,10 +18,15 @@
 
 
 Adafruit_SSD1306 display(4);
+
 Button unitTogBtn (UNIT_TOG_BTN_PIN, true, true, 20);
-double firstTripTime, secondTripTime, chronoReadings[5] = {0, 0, 0, 0, 0};    //keep track of timing between IR gate breakage
+
+double firstTripTime, secondTripTime;    //keep track of timing between IR gate breakage
 boolean hasFirstTripped = false;    //flag to ensure proper timing
 int currentUnit = 0;
+
+double chronoReadings[5] = {0, 0, 0, 0, 0};
+int units[5] = {0, 0, 0, 0, 0};
 
 void setup () { 
   display.begin(SSD1306_SWITCHCAPVCC, 0x3C);  //begin dispaly
