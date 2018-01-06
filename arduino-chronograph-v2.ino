@@ -17,7 +17,7 @@ Adafruit_SSD1306 display(4);
 double firstTripTime, secondTripTime;    //keep track of timing between IR gate breakage
 boolean hasFirstTripped = false;    //flag to ensure proper timing
 
-double chronoReadings[5] = {};
+double chronoReadings[5] = {0, 0, 0, 0, 0};
 
 void setup () { 
   display.begin(SSD1306_SWITCHCAPVCC, 0x3C);  //begin dispaly
@@ -54,6 +54,6 @@ void chrono () {
 
 //chrono calculations based on time
 double calculateChronoReadings () {
-  chronoReading = (double)GATE_DISPLACEMENT/((secondTripTime - firstTripTime) / 1000000);
+  // chronoReading = (double)GATE_DISPLACEMENT/((secondTripTime - firstTripTime) / 1000000);
   displayVals();       //display vals
 }
