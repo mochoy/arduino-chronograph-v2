@@ -34,7 +34,7 @@ void displayVals () {
     display.setTextSize(4);                 //set text size for dispaly
     display.setTextColor(WHITE);            //set text color for display
     display.setCursor(0, 0);                //set cursor so display knows where to type 
-    display.print((String)chronoReading);   //pring chrono reading
+    // display.print((String)chronoReading);   //pring chrono reading
     display.display();                      //display chrono reading
 }
 
@@ -56,4 +56,15 @@ void chrono () {
 double calculateChronoReadings () {
   // chronoReading = (double)GATE_DISPLACEMENT/((secondTripTime - firstTripTime) / 1000000);
   displayVals();       //display vals
+}
+
+int findFirstEmptyVal () {
+  int valToReturn = -1;
+  for (int i = 0; i < 5; i++) {
+    if (chronoReadings[i] == 0) {
+      valToReturn = i;
+    }
+  }
+
+  return valToReturn;
 }
