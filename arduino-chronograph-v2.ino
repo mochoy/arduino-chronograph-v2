@@ -68,9 +68,17 @@ int findFirstEmptyVal () {
 //display text to screen
 void displayVals () {    
     display.clearDisplay();                 //clear display
-    display.setTextSize(4);                 //set text size for dispaly
     display.setTextColor(WHITE);            //set text color for display
+
+    display.setTextSize(3);                 //set text size for dispaly
     display.setCursor(0, 0);                //set cursor so display knows where to type 
-    // display.print((String)chronoReading);   //pring chrono reading
+    display.print((String)chronoReadings[0]);
+
+    display.setTextSize(1);
+    for (int i = 1; i < (findFirstEmptyVal() == -1 ? 5 : findFirstEmptyVal()); i++) {
+      display.setCursor(5, (i * 8));
+      display.print((String)chronoReadings[i]);
+    }
+
     display.display();                      //display chrono reading
 }
