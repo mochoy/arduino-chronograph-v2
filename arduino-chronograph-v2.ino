@@ -11,8 +11,11 @@
 #define GATE_DISPLACEMENT 0.22916666666   //distance between gate, in feet
 #define IR_GATE_TRIP_VAL 60               //value at which the IR gate is considered "blocked", or "tripped"
 
+#define UNIT_TOG_BTN_PIN 2
 
 Adafruit_SSD1306 display(4);
+
+Button unitTogBtn (UNIT_TOG_BTN_PIN, true, true, 20);
 
 double firstTripTime, secondTripTime;    //keep track of timing between IR gate breakage
 boolean hasFirstTripped = false;    //flag to ensure proper timing
