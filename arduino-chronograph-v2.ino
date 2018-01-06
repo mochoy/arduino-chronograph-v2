@@ -54,7 +54,13 @@ void chrono () {
 
 //chrono calculations based on time
 double calculateChronoReadings () {
-  // chronoReading = (double)GATE_DISPLACEMENT/((secondTripTime - firstTripTime) / 1000000);
+  double chronoReading = (double)GATE_DISPLACEMENT/((secondTripTime - firstTripTime) / 1000000);
+  if (findFirstEmptyVal() == -1) {
+    chronoReadings[0] = chronoReading;
+  } else {
+    chronoReadings[findFirstEmptyVal()] = chronoReading;
+  }
+
   displayVals();       //display vals
 }
 
