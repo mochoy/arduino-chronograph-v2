@@ -68,19 +68,19 @@ void chrono () {
 //chrono calculations based on time
 double calculateChronoReadings () {
   double chronoReading = (double)GATE_DISPLACEMENT/((secondTripTime - firstTripTime) / 1000000) * unitConversion[currentUnit];
-  if (findFirstEmptyVal() == -1) {
+  if (findFirstEmptyVal(true) == -1) {
     chronoReadings[0] = chronoReading;
   } else {
-    chronoReadings[findFirstEmptyVal()] = chronoReading;
+    chronoReadings[findFirstEmptyVal(true)] = chronoReading;
   }
 
   displayVals();       //display vals
 }
 
-int findFirstEmptyVal () {
+int findFirstEmptyVal (bool isFromChronoReadings) {
   int valToReturn = -1;
   for (int i = 0; i < 5; i++) {
-    if (chronoReadings[i] == 0) {
+    if (isFromChronoReadings && chronoReadings[i] == 0) {
       valToReturn = i;
     }
   }
@@ -98,7 +98,7 @@ void displayVals () {
     display.print((String)chronoReadings[0] + trailingUnits[currentUnit]);
 
     display.setTextSize(1);
-    for (int i = 1; i < (findFirstEmptyVal() == -1 ? 5 : findFirstEmptyVal()); i++) {
+    for (int i = 1; i < (findFirstEmptyVal(true) == -1 ? 5 : findFirstEmptyVal(true)); i++) {
       display.setCursor(5, (i * 8));
       display.print((String)chronoReadings[i] + trailingUnits[units[i]]);
     }
