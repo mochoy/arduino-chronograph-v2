@@ -100,7 +100,7 @@ void displayVals () {
     display.setTextSize(1);
     for (int i = 1; i < (findFirstEmptyVal() == -1 ? 5 : findFirstEmptyVal()); i++) {
       display.setCursor(5, (i * 8));
-      display.print((String)chronoReadings[i]);
+      display.print((String)chronoReadings[i] + trailingUnits[units[i]]);
     }
 
     display.display();                      //display chrono reading
