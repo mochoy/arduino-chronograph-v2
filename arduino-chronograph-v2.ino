@@ -72,6 +72,7 @@ double calculateChronoReadings () {
     chronoReadings[0] = chronoReading;
   } else {
     chronoReadings[findFirstEmptyVal(true)] = chronoReading;
+    units[findFirstEmptyVal(false)] = currentUnit;
   }
 
   displayVals();       //display vals
