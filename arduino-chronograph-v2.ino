@@ -95,7 +95,7 @@ void displayVals () {
 
     display.setTextSize(3);                 //set text size for dispaly
     display.setCursor(0, 0);                //set cursor so display knows where to type 
-    display.print((String)chronoReadings[0]);
+    display.print((String)chronoReadings[0] + trailingUnits[currentUnit]);
 
     display.setTextSize(1);
     for (int i = 1; i < (findFirstEmptyVal() == -1 ? 5 : findFirstEmptyVal()); i++) {
