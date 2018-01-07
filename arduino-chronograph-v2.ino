@@ -82,6 +82,8 @@ int findFirstEmptyVal (bool isFromChronoReadings) {
   for (int i = 0; i < 5; i++) {
     if (isFromChronoReadings && chronoReadings[i] == 0) {
       valToReturn = i;
+    } else if (!isFromChronoReadings && units[i] == 0) {
+      valToReturn = i;
     }
   }
 
