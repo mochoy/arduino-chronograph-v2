@@ -23,10 +23,11 @@ Button unitTogBtn (UNIT_TOG_BTN_PIN, true, true, 20);
 
 double firstTripTime, secondTripTime;    //keep track of timing between IR gate breakage
 boolean hasFirstTripped = false;    //flag to ensure proper timing
-int currentUnit = 0;
 
+int currentUnit = 0;
 double chronoReadings[5] = {0, 0, 0, 0, 0};
 int units[5] = {0, 0, 0, 0, 0};
+float unitConversion[5] = {1};
 
 void setup () { 
   display.begin(SSD1306_SWITCHCAPVCC, 0x3C);  //begin dispaly
@@ -65,7 +66,7 @@ void chrono () {
 
 //chrono calculations based on time
 double calculateChronoReadings () {
-  double chronoReading = (double)GATE_DISPLACEMENT/((secondTripTime - firstTripTime) / 1000000);
+  double chronoReading = (double)GATE_DISPLACEMENT/((secondTripTime - firstTripTime) / 1000000) * unitConversion[currentUnit];
   if (findFirstEmptyVal() == -1) {
     chronoReadings[0] = chronoReading;
   } else {
