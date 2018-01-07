@@ -27,6 +27,7 @@ boolean hasFirstTripped = false;    //flag to ensure proper timing
 int currentUnit = 0;
 double chronoReadings[5] = {0, 0, 0, 0, 0};
 int units[5] = {0, 0, 0, 0, 0};
+String trailingUnits[5] = {"ft/s", "mi/hr", "m/s", "km/hr"};
 float unitConversion[5] = {1};
 
 void setup () { 
